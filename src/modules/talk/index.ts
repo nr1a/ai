@@ -306,4 +306,5 @@ export default class extends Module {
 			reaction: 'confused'
 		};
 	}
+
 }

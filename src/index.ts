@@ -34,6 +34,8 @@ import NotingModule from './modules/noting/index.js';
 import PollModule from './modules/poll/index.js';
 import ReminderModule from './modules/reminder/index.js';
 import CheckCustomEmojisModule from './modules/check-custom-emojis/index.js';
+import { User } from './misskey/user.js';
+import JihouModule from './modules/jihou/index.js';
 
 console.log('   __    ____  _____  ___ ');
 console.log('  /__\\  (_  _)(  _  )/ __)');
@@ -96,6 +98,7 @@ promiseRetry(retry => {
 		new PollModule(),
 		new ReminderModule(),
 		new CheckCustomEmojisModule(),
+		new JihouModule()
 	]);
 }).catch(e => {
 	log(chalk.red('Failed to fetch the account'));
