@@ -17,10 +17,10 @@ export default class extends Module {
         const minutes = now.getMinutes();
         const hour = now.getHours();
 
-        const hourlyMessage = `今は${hour}時です♪`;
-        this.ai.post({
-            text: hourlyMessage
-        });
+        // const hourlyMessage = `今は${hour}時です♪`;
+        // this.ai.post({
+        //     text: hourlyMessage
+        // });
 
         if (minutes === 0 && this.isTargetHour(hour)) {
             const message = this.getMessageForHour(hour);
