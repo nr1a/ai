@@ -17,12 +17,8 @@ export default class extends Module {
         const minutes = now.getMinutes();
         const hour = now.getHours();
 
-        // const hourlyMessage = `今は${hour}時です♪`;
-        // this.ai.post({
-        //     text: hourlyMessage
-        // });
-
-        if (minutes === 0 && this.isTargetHour(hour)) {
+        // 毎時0分に時報を送信
+        if (minutes === 0) {
             const message = this.getMessageForHour(hour);
             this.ai.post({
                 text: message
@@ -30,28 +26,24 @@ export default class extends Module {
         }
     }
 
-    private isTargetHour(hour: number): boolean {
-        return [1, 5, 9, 12, 15, 20, 23].includes(hour);
-    }
-
     private getMessageForHour(hour: number): string {
         switch (hour) {
             case 1:
-                return '深夜のおやつの時間です♪ええと、今日のおやつは……';
+                return '深夜1時です。深夜のおやつの時間です♪ええと、今日のおやつは……';
             case 5:
-                return 'ふあぁ……おはようございます、こんな時間まで起きていたんですか？早起きならいいんですが……';
+                return '朝5時です。ふあぁ……おはようございます、こんな時間まで起きていたんですか？早起きならいいんですが……';
             case 9:
-                return 'おはようございます！今日も一日がんばりましょう♪';
+                return '朝9時です。おはようございます！今日も一日がんばりましょう♪';
             case 12:
-                return 'お昼の時間です！';
+                return 'お昼12時です。お昼の時間です！';
             case 15:
-                return 'おやつの時間です♪ええと、今日のおやつは……';
+                return '午後3時です。おやつの時間です♪ええと、今日のおやつは……';
             case 20:
-                return '今日も一日お疲れ様でした！お風呂に入って、ご飯を食べてゆっくりしてくださいね♪';
+                return '夜8時です。今日も一日お疲れ様でした！お風呂に入って、ご飯を食べてゆっくりしてくださいね♪';
             case 23:
-                return 'ふわぁ…… 眠くなってきました、そろそろ寝ますね。おやすみなさい！';
+                return '夜11時です。ふわぁ…… 眠くなってきました、そろそろ寝ますね。おやすみなさい！';
             default:
-                return '時間です！';
+                return `現在${hour}時です。`;
         }
     }
 }
